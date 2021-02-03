@@ -1,0 +1,45 @@
+{
+  "routes": [
+    {
+      "name": "root-v1",
+      "type": "version",
+      "path": "/v1",
+      "childs": [
+	{
+	  "name": "board",
+	  "type": "resource",
+	  "path": "/boards",
+	  "childs": [
+	    {
+	      "name": "list",
+	      "type": "resource",
+	      "path": "/lists",
+	      "childs": [
+		{
+		  "name": "card",
+		  "type": "resource",
+		  "path": "/cards",
+		  "childs": [
+		    {
+		      "name": "coloring",
+		      "type": "control",
+		      "path": "/coloring",
+		      "childs": []
+		    }
+		  ]
+		}
+	      ]
+	    }
+	  ]
+	}
+      ]
+    },
+
+    {
+      "name": "root-v2",
+      "type": "version",
+      "path": "/v2",
+      "childs": []
+    }
+  ]
+}
