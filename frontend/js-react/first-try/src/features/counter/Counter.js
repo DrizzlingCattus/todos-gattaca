@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Button as GrommetButton } from "grommet";
 import {
   decrement,
   increment,
@@ -17,14 +18,11 @@ export function Counter() {
   return (
     <div>
       <div className={styles.row}>
-        <button
-          className={styles.button}
-          type="button"
-          aria-label="Increment value"
+        <GrommetButton
+          color="primary"
+          label="inc"
           onClick={() => dispatch(increment())}
-        >
-          +
-        </button>
+        />
         <span className={styles.value}>{count}</span>
         <button
           className={styles.button}

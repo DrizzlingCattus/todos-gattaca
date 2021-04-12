@@ -16,7 +16,7 @@
   font-family: "Courier New", Courier, monospace;
 }
 
-.button {
+/*.button {
   appearance: none;
   background: none;
   font-size: 32px;
@@ -30,7 +30,7 @@
   background-color: rgba(112, 76, 182, 0.1);
   border-radius: 2px;
   transition: all 0.15s;
-}
+}*/
 
 .textbox {
   font-size: 32px;

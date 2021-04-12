@@ -1,57 +1,68 @@
+import styled
 import React from "react";
-import logo from "./logo.svg";
-import { Counter } from "./features/counter/Counter";
-import "./App.css";
+import { Grommet, Box, List, Grid } from "grommet";
+import { grommet } from "grommet/themes";
+
+const locations = [
+  "Boise",
+  "Fort Collins",
+  "Los Gatos",
+  "Palo Alto",
+  "San Francisco",
+];
+
+const data = [];
+
+for (let i = 0; i < 40; i += 1) {
+  data.push({
+    entry: `entry-${i + 1}`,
+    location: locations[i % locations.length],
+    date: `2018-07-${(i % 30) + 1}`,
+    percent: (i % 11) * 10,
+    paid: ((i + 1) * 17) % 1000,
+  });
+}
+
+const CardBox = () => {
+  const [clicked, setClicked] = React.useState();
+  return (
+    <Box align="center" pad="large" gap="large">
+      <List
+        data={data.slice(0, 10)}
+        onClickItem={(event) => setClicked(event.item)}
+      />
+      {clicked && JSON.stringify(clicked, null, 2)}
+    </Box>
+  );
+};
+
+const TODOBoard = () => (
+  <Grid
+    columns={{
+      count: 6,
+      size: "auto",
+    }}
+    gap="small"
+  >
+    <CardBox background="brand" />
+    <CardBox background="brand" />
+    <CardBox background="brand" />
+    <CardBox background="brand" />
+    <CardBox background="brand" />
+    <CardBox background="brand" />
+    <CardBox background="brand" />
+  </Grid>
+);
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Grommet themes={grommet} full>
+      <CardBox />
+
+      <hr />
+
+      <TODOBoard />
+    </Grommet>
   );
 }
 
